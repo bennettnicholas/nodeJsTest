@@ -1,22 +1,22 @@
-var express = require('express');
-var app = express();
-var port = process.env.PORT || 3000;
-var figurineRouter = express.Router();
+var express = require('express')
+var figurines =require('./data/figurines')
+var app = express()
+var port = process.env.PORT || 3000
+var figurineRouter = express.Router()
 
 figurineRouter.route('/figurine')
    .get((req, res) => {
-   	   var response = {hello: 'This is the GET endpoint'} 
-   	   res.json(response);
+   	   res.json(figurines)
    });
 
-app.use('/api', figurineRouter);
+app.use('/api', figurineRouter)
 
 
 app.get('/', (req, res)=>{
-    res.send('Welcome to our site');
+    res.send('Welcome to our site')
 });
 
 app.listen(port, ()=>{
-   console.log('Running on port ' + port);
+   console.log('Running on port ' + port)
 });
 
